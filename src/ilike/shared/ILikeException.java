@@ -1,5 +1,7 @@
 package ilike.shared;
 
-public class ILikeException {
+public class ILikeException extends java.lang.Exception{
+	
+	
 
 }
