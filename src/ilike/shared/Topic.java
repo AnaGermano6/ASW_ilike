@@ -3,6 +3,7 @@ package ilike.shared;
 import java.sql.Date;
 
 public class Topic extends Item{
+	public static String id;
 	
 	Date date(){
 		
@@ -26,19 +27,6 @@ public class Topic extends Item{
 	
 	List<String> getReviews(String id){
 		//lista de críticas associadas ao tópico
-	}
-	
-	boolean equals(Item){
-		//verificar se 2 items são iguais
-	}
-	
-	int ahshCode(Item){
-		//função de partição
-	}
-	
-	public String toString(){
-		//representar como string
-		
 	}
 	
 

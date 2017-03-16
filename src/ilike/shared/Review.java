@@ -31,8 +31,11 @@ public class Review {
 		//função de partição
 	}
 	
-	public String toString(){
-		//representar como string
+	@Override
+	public String toString() {
+		return "Review [autorId()=" + autorId() + ", topicId()=" + topicId() + ", rating()=" + rating()
+				+ ", descrição()=" + descrição() + ", equals()=" + equals() + ", hashCode()=" + hashCode()
+				+ ", getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
 	}
 	
 
