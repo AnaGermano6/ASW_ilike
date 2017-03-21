@@ -1,38 +1,55 @@
 package ilike.shared;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
-public class Item {
-	Item item =new Item();
-	public static String id;
-	public static String name;
+public class Item implements Serializable{
+	public String id;
+	public String name;
+	public Set<String> tags;
 	
+	public Item(String id, String name, Set<String> tags) {
+		this.id = id;
+		this.name = name;
+		this.tags = tags;
+	}
 
-	String id(){
-		return this.id;	
-	}
-	
-	String name(){
-		return this.name;
-	}
-	
-	Set<String> tags(){
-		
-		//conjunto de tags classificando o item
-		return null;
-		
-	}
-	
-	//funcaoo de particao
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((item == null) ? 0 : item.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((tags == null) ? 0 : tags.hashCode());
 		return result;
 	}
 
-	//verifica se 2 items são iguais
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Set<String> getTags() {
+		if(tags==null) return new HashSet<String>();
+		return tags;
+	}
+
+	public void setTags(Set<String> tags) {
+		this.tags = tags;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -42,32 +59,33 @@ public class Item {
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
-		if (item == null) {
-			if (other.item != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!item.equals(other.item))
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (tags == null) {
+			if (other.tags != null)
+				return false;
+		} else if (!tags.equals(other.tags))
 			return false;
 		return true;
 	}
 
-	//representa como string
 	@Override
 	public String toString() {
-		return "Item [id()=" + id() + ", name()=" + name() + ", tags()=" + tags() + ", equals()=" + equals(item)
-				+ ", hashCode()=" + hashCode() + ", getRelatedItemIds()=" + getRelatedItemIds() + ", getClass()="
-				+ getClass() + ", toString()=" + super.toString() + "]";
+		return "Item [id=" + id + ", name=" + name + ", tags=" + tags + ", hashCode()=" + hashCode()
+				+ ", getRelatedItemIds()=" + getRelatedItemIds() + ", getClass()=" + getClass() + ", toString()="
+				+ super.toString() + "]";
 	}
 	
 	
 	Set<String> getRelatedItemIds(){
-		
-	/*conjunto de IDs relacionados com item, de modo que se este for criado ou alterado, 
-	 * estes também devem ser notificados. Este método destina-se a ser redefinido por algumas classe, 
-	 * e na versão genérica retorna o conjunto vazio.
-	 */
-		return null;
-		
-	}
-	
-	
+		return new HashSet<String>();
+	}	
 }
