@@ -1,8 +1,13 @@
 package ilike.tag;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
+import ilike.shared.*;
 
 public class Trie {
+	List<String> l = new LinkedList<String>();
 
 	
 	//nó da estrutura trie
@@ -16,7 +21,7 @@ public class Trie {
 		}
 		getWordsStartingWith(String word, int index, StringBuffer buffer, Counter counter){
 			//Desce a trie em busca de palavras com um dado prefixo, construindo as palavras no buffer e usando counter para recolher as palavras
-
+			
 		}
 		
 	}

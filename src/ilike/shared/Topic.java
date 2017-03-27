@@ -7,15 +7,17 @@ import java.util.List;
 import java.util.Set;
 
 public class Topic extends Item implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	public Date date;
 	public String description;
-	public List<String> reviews;
+	public List<String> topics;
 	
 	Topic(String id, String name, Set<String> tags, String description, Date date) {
 		super(id, name, tags);
 		this.date = date;
 		this.description = description;
-		this.reviews = new LinkedList<String>();
+		this.topics = new LinkedList<String>();
 	}
 
 
@@ -40,12 +42,12 @@ public class Topic extends Item implements Serializable {
 
 
 	public List<String> getReviews() {
-		return reviews;
+		return topics;
 	}
 
 
 	public void setReviews(List<String> reviews) {
-		this.reviews = reviews;
+		this.topics = reviews;
 	}
 
 
@@ -55,7 +57,7 @@ public class Topic extends Item implements Serializable {
 		int result = super.hashCode();
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
+		result = prime * result + ((topics == null) ? 0 : topics.hashCode());
 		return result;
 	}
 
@@ -79,10 +81,10 @@ public class Topic extends Item implements Serializable {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (reviews == null) {
-			if (other.reviews != null)
+		if (topics == null) {
+			if (other.topics != null)
 				return false;
-		} else if (!reviews.equals(other.reviews))
+		} else if (!topics.equals(other.topics))
 			return false;
 		return true;
 	}
@@ -90,24 +92,24 @@ public class Topic extends Item implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Topic [date=" + date + ", description=" + description + ", reviews=" + reviews + "]";
+		return "Topic [date=" + date + ", description=" + description + ", reviews=" + topics + "]";
 	}
 
 
 	void addReview(String id){
 		//adiciona o ID de uma crítica
-		this.reviews.add(id);
+		this.topics.add(id);
 		
 	}
 	
 	void removeReview(String id){
 		//remove o ID de uma crítica
-		this.reviews.remove(id);
+		this.topics.remove(id);
 	}
 	
 	public List<String> getReviews(String id){
 		//lista de críticas associadas ao tópico
-		return reviews;
+		return topics;
 		
 	}
 

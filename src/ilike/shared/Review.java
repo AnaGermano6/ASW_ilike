@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Review extends Item implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	public String authorId;
 	public String topicId;
 	public Rating rating;
@@ -60,7 +62,7 @@ public class Review extends Item implements Serializable {
 	}
 	
 	Set<String> getRelatedItemIds(){
-		// adicionar aqui os Ids do item
+		// adicionar os Ids do item
 		HashSet<String> hs = new HashSet<String>();
 		hs.add(authorId);
 		hs.add(topicId);

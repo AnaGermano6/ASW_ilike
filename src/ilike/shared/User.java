@@ -7,16 +7,15 @@ import java.util.Observer;
 import java.util.Set; 
 
 public class User extends Item implements Observer{
-	static int feedSize; //Número de elementos do feed
+	
+	private static final long serialVersionUID = 1L;
+	public static int feedSize; //Número de elementos do feed
 	public List<String> feeds;
 	
 	User(String id, String name, Set<String> tags) {
 		super(id, name, tags);
 		this.feeds = new LinkedList<String>();
 	}
-
-
-
 
 	public static int getFeedSize() {
 		return feedSize;
@@ -26,9 +25,11 @@ public class User extends Item implements Observer{
 		User.feedSize = feedSize;
 	}
 
-
+	/**
+	 * actualizacoes ao utilizador
+	 * @return
+	 */
 	public List<String> getFeed(){
-		//atualizações destinadas ao utilizador, que excedem feedSize
 		return feeds;
 	}
 
@@ -37,13 +38,15 @@ public class User extends Item implements Observer{
 	}
 	
 	
+	/**
+	 * recebe as noticicacoes
+	 */
+	
 	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+	public void update(Observable o, Object arg) {		
 		((LinkedList<String>) feeds).addFirst(arg.toString());
 		
-		if(feeds.size()>this.getFeedSize()){
+		if(feeds.size()>User.getFeedSize()){
 			feeds.remove(feeds.size()-1);
 		}
 	}

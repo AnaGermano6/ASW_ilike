@@ -29,6 +29,7 @@ public class UserTest extends TestData {
 	@Before
 	public void setUp() throws Exception {
 		user = new User(ID1,NAME,null);
+		User.setFeedSize(SIZE);
 	}
 
 	

@@ -4,25 +4,30 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Item implements Serializable{
+/**
+ * 
+ * @author Ana Germano up201105083
+ *
+ */
+
+public class Item implements Serializable, Comparable<Item>{
+	
+	private static final long serialVersionUID = 1L;
 	public String id;
 	public String name;
 	public Set<String> tags;
 	
-	public Item(String id, String name, Set<String> tags) {
-		this.id = id;
-		this.name = name;
-		this.tags = tags;
+	public Item(){
+		setId("");
+		setName("");
+		setTags(new HashSet<String>());
+		
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((tags == null) ? 0 : tags.hashCode());
-		return result;
+	
+	public Item(String id, String name, Set<String> tags) {
+		setId(id);
+		setName(name);
+		setTags(tags);
 	}
 
 	public String getId() {
@@ -49,7 +54,18 @@ public class Item implements Serializable{
 	public void setTags(Set<String> tags) {
 		this.tags = tags;
 	}
-
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((tags == null) ? 0 : tags.hashCode());
+		return result;
+	}
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -87,5 +103,11 @@ public class Item implements Serializable{
 	
 	Set<String> getRelatedItemIds(){
 		return new HashSet<String>();
+	}
+
+	@Override
+	public int compareTo(Item o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}	
 }

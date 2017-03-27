@@ -1,27 +1,100 @@
 package ilike.tag;
 
+import java.io.Serializable;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 import ilike.shared.*;
 
-public class Indexer {
-	LinkedList<String> list;
+public class Indexer implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+	List<Item> list;
+
+	Indexer() {
+		this.list = new LinkedList<Item>();
+	}
+
+	public List<Item> getList() {
+		return list;
+	}
+
+	public void setList(List<Item> list) {
+		this.list = list;
+	}
 	
-	void index(Item o){
-		//regista o id do item indexado pelas suas tags
+	/**
+	 * Regista o id do item indexado pelas suas tags
+	 * No caso de ter varios com o mesmo tamanho é necessario o break
+	 * vai garantir que nao repete o mesmo  id
+	 * 
+	 * @param i item 
+	 */
+
+	public void index(Item i) {
+		
+		for (Item pointer : list) {
+			if (pointer.tags.size() < i.tags.size()) {
+				list.add(list.indexOf(pointer), i);
+				break;
+			} else if (pointer.tags.size() == i.tags.size()) {
+				List<Item> arrayTemp = new LinkedList<Item>();
+				for (int j = list.indexOf(pointer); j < list.size(); j++) {
+					if (pointer.tags.size() == i.tags.size()) {
+						arrayTemp.add(list.get(list.indexOf(pointer) + j));
+						list.remove(list.get(list.indexOf(pointer) + j));
+					}
+				}
+				// ordenar os ids
+				String idArray[] = new String[arrayTemp.size()];
+				for (Item tempItem : arrayTemp)
+					idArray[arrayTemp.indexOf(tempItem)] = tempItem.id;
+				Arrays.sort(idArray);
+
+				
+				//volta a colocar na ordem certa ja ordenada
+				for (int c = 0; c < idArray.length; c++) {
+					Item toAdd = new Item();
+					for (Item temp : arrayTemp) {
+						if (temp.id.equals(idArray[c]))
+							toAdd = temp;
+						break;
+					}
+					list.add(list.indexOf(pointer) + c, toAdd);
+
+				}
+
+			}
+		}
+	}
+
+	// remove o registo do id do item associado às suas tags
+	public void unindex(Item i) {
+		list.remove(i);
+	}
+
+	// retorna os IDs dos items contendo alguma das tags no conjunto dado.
+	public List<String> search(Set<String> s) {
+		//Criar nova lista de strings L
+		//para cada tag no conjunto s, procurar na lista list por items 
+		//que tenham essa tag no seu conjunto de tags.
+		//Se o item tem, adicionar o seu ID à lista L
+		
+		//retorna L
 		
 		
+		List<String> ids = new LinkedList<String>();
+		
+		for(Item i: list){
+			
+			
+		}
+			
+			
+			
+		
+		return ids;
 	}
-	
-	void unindex(Item o){
-		//remove o registo do id do item associado às suas tags
-	}
-	
-	List<String> search(Set<String>){
-		//retorna os IDs dos items contendo alguma das tags no conjunto dado.
-
-	}
-	
-
 }

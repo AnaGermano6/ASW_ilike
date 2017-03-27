@@ -1,11 +1,20 @@
 package ilike.tag;
 
+import java.io.Serializable;
 import java.util.Collections;
+import ilike.shared.*;
 
-public class Counter {
+public class Counter implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * conta cada palavra
+	 * @param word
+	 */
 	
 	void count(String word){
-		//conta a palavra dada
+		
 	}
 	void put(String word,int count){
 		//atribui uma contagem à palavra
