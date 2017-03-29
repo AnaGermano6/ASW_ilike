@@ -3,6 +3,14 @@ package ilike.SocNet;
 import java.util.Observer;
 import java.util.Observable;
 
+import ilike.shared.*;
+
+/**
+ * 
+ * @author Ana Germano up201105083
+ *
+ */ 
+
 public class Notifier {
 
 	void followItem(String itemId,Observer observer){

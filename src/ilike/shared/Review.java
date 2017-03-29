@@ -4,6 +4,12 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 
+ * @author Ana Germano up201105083
+ *
+ */
+
 public class Review extends Item implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -61,8 +67,12 @@ public class Review extends Item implements Serializable {
 		this.description = descrição;
 	}
 	
-	Set<String> getRelatedItemIds(){
-		// adicionar os Ids do item
+	
+	/**
+	 * adiciona os Ids do item
+	 * 
+	 */
+	public Set<String> getRelatedItemIds(){ 
 		HashSet<String> hs = new HashSet<String>();
 		hs.add(authorId);
 		hs.add(topicId);

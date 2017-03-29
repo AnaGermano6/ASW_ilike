@@ -2,6 +2,7 @@ package ilike.shared;
 
 public class ILikeException extends java.lang.Exception{
 
+
 	public ILikeException() {
 		super();
 		// TODO Auto-generated constructor stub

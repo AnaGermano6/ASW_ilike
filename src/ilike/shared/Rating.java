@@ -1,8 +1,13 @@
 package ilike.shared;
 
 /**
- * classificacao de uma crítica.
+ * 
+ * classificacao de uma critica
+ * 
+ * @author Ana Germano up201105083
+ *
  */
+
 public enum Rating { 
 	ZERO("very bad"), 
 	ONE("weak"), 

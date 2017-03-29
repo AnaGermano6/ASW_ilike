@@ -3,15 +3,20 @@ package ilike.shared;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
+
+/**
+ * 
+ * @author Ana Germano up201105083
+ *
+ */
 
 public class Topic extends Item implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	public Date date;
 	public String description;
-	public List<String> topics;
+	public LinkedList<String> topics;
 	
 	Topic(String id, String name, Set<String> tags, String description, Date date) {
 		super(id, name, tags);
@@ -41,12 +46,12 @@ public class Topic extends Item implements Serializable {
 	}
 
 
-	public List<String> getReviews() {
+	public LinkedList<String> getReviews() {
 		return topics;
 	}
 
 
-	public void setReviews(List<String> reviews) {
+	public void setReviews(LinkedList<String> reviews) {
 		this.topics = reviews;
 	}
 
@@ -95,22 +100,33 @@ public class Topic extends Item implements Serializable {
 		return "Topic [date=" + date + ", description=" + description + ", reviews=" + topics + "]";
 	}
 
-
-	void addReview(String id){
-		//adiciona o ID de uma crítica
+	/**
+	 * Adiciona o id de uma critica na lista
+	 * 
+	 * @param id
+	 */
+	
+	public void addReview(String id){
 		this.topics.add(id);
-		
 	}
 	
-	void removeReview(String id){
-		//remove o ID de uma crítica
+	/**
+	 * Remove o id da uma critica da lista
+	 * 
+	 * @param id
+	 */
+	
+	public void removeReview(String id){
 		this.topics.remove(id);
 	}
 	
-	public List<String> getReviews(String id){
-		//lista de críticas associadas ao tópico
+	/**
+	 *lista de criticas associadas ao topico
+	 * 
+	 * @param id
+	 * @return 
+	 */
+	public LinkedList<String> getReviews(String id){
 		return topics;
-		
 	}
-
 }

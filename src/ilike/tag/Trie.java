@@ -2,13 +2,13 @@ package ilike.tag;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 
 import ilike.shared.*;
 
 public class Trie {
-	List<String> l = new LinkedList<String>();
-
+	LinkedList<String> l = new LinkedList<String>();
+	
+	
 	
 	//nó da estrutura trie
 	class Node extends HashMap<Character,Node>{
@@ -34,7 +34,7 @@ public class Trie {
 		//decrementa as tags do item na estrutura de nos (iniciando na raiz).
 		
 	}
-	List<String> getWordsStarting(String prefix){
+	LinkedList<String> getWordsStarting(String prefix){
 		//Percorre a trie em busca de palavras começadas pelo prefixo dado e retorna-as como uma lista ordenada.
 		
 	}

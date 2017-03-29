@@ -8,10 +8,16 @@ import java.util.Set;
 
 import ilike.shared.*;
 
+/**
+ * 
+ * @author Ana Germano up201105083
+ *
+ */
+
 public class Indexer implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	List<Item> list;
+	LinkedList<Item> list;
 
 	Indexer() {
 		this.list = new LinkedList<Item>();
@@ -21,7 +27,7 @@ public class Indexer implements Serializable{
 		return list;
 	}
 
-	public void setList(List<Item> list) {
+	public void setList(LinkedList<Item> list) {
 		this.list = list;
 	}
 	
@@ -33,16 +39,16 @@ public class Indexer implements Serializable{
 	 * @param i item 
 	 */
 
-	public void index(Item i) {
+	public void index(Item id) {
 		
 		for (Item pointer : list) {
-			if (pointer.tags.size() < i.tags.size()) {
-				list.add(list.indexOf(pointer), i);
+			if (pointer.tags.size() < id.tags.size()) {
+				list.add(list.indexOf(pointer), id);
 				break;
-			} else if (pointer.tags.size() == i.tags.size()) {
+			} else if (pointer.tags.size() == id.tags.size()) {
 				List<Item> arrayTemp = new LinkedList<Item>();
 				for (int j = list.indexOf(pointer); j < list.size(); j++) {
-					if (pointer.tags.size() == i.tags.size()) {
+					if (pointer.tags.size() == id.tags.size()) {
 						arrayTemp.add(list.get(list.indexOf(pointer) + j));
 						list.remove(list.get(list.indexOf(pointer) + j));
 					}
@@ -63,20 +69,29 @@ public class Indexer implements Serializable{
 						break;
 					}
 					list.add(list.indexOf(pointer) + c, toAdd);
-
 				}
-
 			}
 		}
 	}
-
-	// remove o registo do id do item associado às suas tags
-	public void unindex(Item i) {
-		list.remove(i);
+	
+	/**
+	 * remove o registo do id do item associado às suas tags
+	 * 
+	 * @param id
+	 */
+	
+	public void unindex(Item id) {
+		list.remove(id);
 	}
 
-	// retorna os IDs dos items contendo alguma das tags no conjunto dado.
-	public List<String> search(Set<String> s) {
+	/**
+	 * retorna a lista IDs dos items contendo alguma das tags no conjunto dado
+	 * 
+	 * @param s
+	 * @return
+	 */
+	 
+	public LinkedList<String> search(Set<String> s) {
 		//Criar nova lista de strings L
 		//para cada tag no conjunto s, procurar na lista list por items 
 		//que tenham essa tag no seu conjunto de tags.
@@ -85,16 +100,16 @@ public class Indexer implements Serializable{
 		//retorna L
 		
 		
-		List<String> ids = new LinkedList<String>();
+		LinkedList<String> ids = new LinkedList<String>();
 		
-		for(Item i: list){
-			
-			
-		}
-			
-			
-			
+		if(list.isEmpty())
+			return ids;
 		
+		for(Item pointer: list){
+			if(s.contains(pointer.tags)){
+				ids.addLast(pointer.id);
+			}
+		}		
 		return ids;
 	}
 }

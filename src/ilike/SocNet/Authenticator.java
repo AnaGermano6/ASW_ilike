@@ -1,5 +1,13 @@
 package ilike.SocNet;
 
+import ilike.shared.*;
+
+/**
+ * 
+ * @author Ana Germano up201105083
+ *
+ */
+
 public class Authenticator {
 	
 	boolean register(String userId,String password){

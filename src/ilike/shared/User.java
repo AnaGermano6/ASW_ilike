@@ -1,16 +1,21 @@
 package ilike.shared;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set; 
 
+/**
+ * 
+ * @author Ana Germano up201105083
+ *
+ */ 
+
 public class User extends Item implements Observer{
 	
 	private static final long serialVersionUID = 1L;
-	public static int feedSize; //Número de elementos do feed
-	public List<String> feeds;
+	public static int feedSize; //numero de elementos do feed
+	public LinkedList<String> feeds;
 	
 	User(String id, String name, Set<String> tags) {
 		super(id, name, tags);
@@ -27,19 +32,22 @@ public class User extends Item implements Observer{
 
 	/**
 	 * actualizacoes ao utilizador
+	 * 
 	 * @return
 	 */
-	public List<String> getFeed(){
+	
+	public LinkedList<String> getFeed(){
 		return feeds;
 	}
 
-	public void setFeeds(List<String> feeds) {
+	public void setFeeds(LinkedList<String> feeds) {
 		this.feeds = feeds;
 	}
 	
 	
 	/**
 	 * recebe as noticicacoes
+	 * 
 	 */
 	
 	@Override
