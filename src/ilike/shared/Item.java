@@ -95,9 +95,7 @@ public class Item implements Serializable, Comparable<Item>{
 
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", name=" + name + ", tags=" + tags + ", hashCode()=" + hashCode()
-				+ ", getRelatedItemIds()=" + getRelatedItemIds() + ", getClass()=" + getClass() + ", toString()="
-				+ super.toString() + "]";
+		return "Item [id=" + id + ", name=" + name + ", tags=" + tags + "]";
 	}
 	
 	
@@ -106,9 +104,11 @@ public class Item implements Serializable, Comparable<Item>{
 	}
 
 	@Override
-	public int compareTo(Item o) {
-		
-		
-		return 0;
+	public int compareTo(Item item) {
+		if(this.getId().compareTo(item.getId()) < 0)
+			return 1;
+		if(this.getId().compareTo(item.getId()) > 0)
+			return -1;
+		return (this.getId().compareTo(item.getId()));
 	}	
 }

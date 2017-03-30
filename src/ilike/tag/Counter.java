@@ -58,7 +58,7 @@ public class Counter implements Serializable {
 				return 1;
 			if(this.count > w.count)
 				return -1;
-			return 0;
+			return this.word.compareTo(w.word);
 		}
 	}
 	
@@ -88,7 +88,7 @@ public class Counter implements Serializable {
 	public CountWords get(String stringWords) {
 		
 		for(CountWords w : counterWords){
-			if(w.word.equals(stringWords))
+			if(w.getWord().equals(stringWords))
 				return w;
 		}
 		
@@ -113,7 +113,7 @@ public class Counter implements Serializable {
 	}
 	
 	/**
-	 * Atribui uma contagem à palavra
+	 * Atribui uma contagem a palavra
 	 * 
 	 * @param word
 	 * @param count
@@ -121,12 +121,17 @@ public class Counter implements Serializable {
 	
 	public void put(String word,int count){
 		
-		for(CountWords w: counterWords){
-			if(w.word.equals(word))
-				w.setCount(count);
-			counterWords.add(new CountWords(word, count));
-		}
+		boolean check=false; 
 		
+		for(CountWords w: counterWords){
+			if(w.word.equals(word)){
+				w.setCount(count);
+				check=true;
+			}
+		}
+		//verificacao se a palavra esta na lista
+		if(check!=true)
+			getCounterWords().add(new CountWords(word, count));	
 	}
 	
 	/**
@@ -136,13 +141,13 @@ public class Counter implements Serializable {
 	 */
 	
 	public LinkedList<String> getSorted(){
+		LinkedList<String> list = new LinkedList<String>();
 		
 		Collections.sort(counterWords);
 		
 		for(CountWords w : counterWords){
-			words.add(w.word);
+			list.add(w.word);
 		}	
-		
-		return words;
+		return list;
 	}
 }

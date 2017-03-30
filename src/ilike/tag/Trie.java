@@ -1,22 +1,55 @@
 package ilike.tag;
 
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 import ilike.shared.*;
 
+/**
+ * 
+ * @author Ana Germano up201105083
+ *
+ */
+
 public class Trie {
-	LinkedList<String> l = new LinkedList<String>();
+	LinkedList<String> list = new LinkedList<String>();
 	
 	
 	
 	//nó da estrutura trie
 	class Node extends HashMap<Character,Node>{
 		int count; //numero de ocorrências da palavra correspondente a este nó
+		char charact; //caracter
+		boolean finalWord; //se é uma palavra
 		
+		HashMap<Character, Node> charNode;
 		
+		public Node() {
+			this.count = 0;
+			this.charact=charact;
+		}
+		
+		public char getCharact() {
+			return charact;
+		}
+
+		public void setCharact(char charact) {
+			this.charact = charact;
+		}
+
+		public int getCount() {
+			return count;
+		}
+
+		public void setCount(int count) {
+			this.count = count;
+		}
+
 		void put(String word, int index, int delta){
 			//coloca neste nó a letra da string no índice dado. (recursivamente coloca as restantes letras em nós descendentes). Quando a palavra é encontrada a contagem varia em delta.
+			
+			for(Node no: ){
+				
+			}
 			
 		}
 		getWordsStartingWith(String word, int index, StringBuffer buffer, Counter counter){

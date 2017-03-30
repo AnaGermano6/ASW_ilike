@@ -1,4 +1,4 @@
-package ilike.SocNet;
+package ilike.socnet;
 
 import java.util.LinkedList;
 import java.util.Set;
