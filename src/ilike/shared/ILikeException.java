@@ -1,7 +1,14 @@
 package ilike.shared;
 
+/**
+ * 
+ * @author Ana Germano up201105083
+ *
+ */ 
+
 public class ILikeException extends java.lang.Exception{
 
+	private static final long serialVersionUID = 1L;
 
 	public ILikeException() {
 		super();

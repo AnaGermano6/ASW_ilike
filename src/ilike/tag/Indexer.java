@@ -15,16 +15,28 @@ import ilike.shared.*;
 public class Indexer implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	LinkedList<Item> list;
+	private LinkedList<Item> list;
 
-	Indexer() {
+	public Indexer() {
 		this.list = new LinkedList<Item>();
 	}
-
+	
+	/**
+	 * retorna a lista 
+	 * 
+	 * @return
+	 */
+	
 	public LinkedList<Item> getList() {
 		return list;
 	}
 
+	/**
+	 * altera a lista
+	 * 
+	 * @param list
+	 */
+	
 	public void setList(LinkedList<Item> list) {
 		this.list = list;
 	}
@@ -55,7 +67,7 @@ public class Indexer implements Serializable{
 	 * retorna a lista IDs dos items contendo alguma das tags no conjunto dado
 	 * 
 	 * @param s
-	 * @return
+	 * @return list
 	 */
 	 
 	public LinkedList<String> search(Set<String> s) {

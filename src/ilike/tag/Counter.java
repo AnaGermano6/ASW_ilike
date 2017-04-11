@@ -15,8 +15,8 @@ import ilike.shared.*;
 public class Counter implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	public LinkedList<String> words; 
-	public LinkedList<CountWords> counterWords;
+	private LinkedList<String> words; 
+	private LinkedList<CountWords> counterWords;
 	
 	/**
 	 * class auxiliar para a contagem de palavras
@@ -32,25 +32,51 @@ public class Counter implements Serializable {
 			this.count = count;
 		}
 
+		/**
+		 * retorna a palavra
+		 * 
+		 * @return
+		 */
+		
 		public String getWord() {
 			return word;
 		}
 
+		/**
+		 * altera a palavra
+		 * 
+		 * @param word
+		 */
+		
 		public void setWord(String word) {
 			this.word = word;
 		}
 
-		public int getCount() {
-			return count;
-		}
+				
+		/**
+		 * altera o numero de palavras
+		 * 
+		 * @param count
+		 */
 
 		public void setCount(int count) {
 			this.count = count;
 		}
 		
+		/**
+		 * retorna o numero de palavras
+		 * 
+		 * @return
+		 */
 		public int intValue() {
+			
 			return count;
 		}
+		
+		/**
+		 * compara e ordena lexicograficamente 
+		 * 
+		 */
 
 		@Override
 		public int compareTo(CountWords w) {
@@ -67,23 +93,53 @@ public class Counter implements Serializable {
 		this.words = new LinkedList<String>();
 		this.counterWords = new LinkedList<CountWords>();
 	}
+	
+	/**
+	 * retorna a lista de palavras
+	 * 
+	 * @return
+	 */
 
 	public LinkedList<String> getWords() {
 		return words;
 	}
+	
+	/**
+	 * altera as palavras 
+	 * 
+	 * @param words
+	 */
 
 	public void setWords(LinkedList<String> words) {
 		this.words = words;
 	}
+	
+	/**
+	 * retorna a lista de contador de palavras
+	 * 
+	 * @return
+	 */
 
 	public LinkedList<CountWords> getCounterWords() {
 		return counterWords;
 	}
 
-
+	/**
+	 * altera a lista de contador de palavras
+	 * 
+	 * @param counterWords
+	 */
+	
 	public void setCounterWords(LinkedList<CountWords> counterWords) {
 		this.counterWords = counterWords;
 	}
+	
+	/**
+	 * retorna a palavra caso exista na lista
+	 * 
+	 * @param stringWords
+	 * @return
+	 */
 	
 	public CountWords get(String stringWords) {
 		

@@ -12,15 +12,25 @@ import ilike.shared.*;
 
 public class Authenticator {
 
-	public HashMap<String, String> users; 
+	private HashMap<String, String> users; 
 	
 	public Authenticator() {
 		this.users = new HashMap<String, String>();
 	}
 
+	/**
+	 * retorna a hashmap dos utilizadores
+	 * 
+	 * @return
+	 */
 	public HashMap<String, String> getUsers() {
 		return users;
 	}
+	
+	/**
+	 * Altera a hashmap dos utilizadores
+	 * @param users
+	 */
 
 	public void setUsers(HashMap<String, String> users) {
 		this.users = users;
@@ -79,6 +89,18 @@ public class Authenticator {
 			if(pass.equals(password)) 
 				return true;
 		}
+		return false;
+	}
+	
+	/**
+	 * metodo auxiliar para verificar se o utilizador existe
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public boolean existUser(String userId){
+		if(users.containsKey(userId))
+			return true;
 		return false;
 	}
 }

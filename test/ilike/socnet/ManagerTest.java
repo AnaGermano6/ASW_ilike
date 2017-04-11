@@ -1,6 +1,13 @@
 package ilike.socnet;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -8,9 +15,11 @@ import org.junit.Test;
 
 import ilike.TestData;
 import ilike.shared.ILikeException;
+import ilike.shared.Item;
 import ilike.shared.Review;
 import ilike.shared.Topic;
 import ilike.shared.User;
+import ilike.tag.Indexer;
 
 /**
  * Tests on Manager, the facade of the ILike model
@@ -22,7 +31,7 @@ public class ManagerTest extends TestData {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		manager = Manager.getInstance();
+		manager = new Manager();
 	}
 	
 	User user1;
@@ -53,7 +62,7 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testRegisterAuthenticate() {
-		fail("Unimplemented yet");
+		assertTrue(manager.register(USER1_ID, PASSWORD1));	
 	}
 
 	/**
@@ -62,7 +71,10 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testUpdatePassword() {
-		fail("Unimplemented yet");
+		HashMap<String, String> users = manager.getAuthenticator().getUsers(); 
+		manager.register(USER1_ID, PASSWORD1);
+		manager.updatePassword(USER1_ID, PASSWORD1, PASSWORD2);
+		assertEquals(PASSWORD2, users.get(USER1_ID));
 	}
 
 
@@ -72,7 +84,10 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testAddGetItem() throws ILikeException {
-		fail("Unimplemented yet");
+		Item item = new Item(ID1,NAME,TAGS);
+		manager.addItem(item);
+		
+		assertEquals(item, manager.getItem(ID1));
 	}
 
 
@@ -83,7 +98,10 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testChangeItem() throws ILikeException {
-		fail("Unimplemented yet");
+		Item item = new Item(ID1,NAME,TAGS);
+		manager.changeItem(item);
+		
+		assertEquals(NAME, manager.getItem(ID1).getName());
 	}
 
 
@@ -94,7 +112,10 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testRemoveItem() throws ILikeException {
-		fail("Unimplemented yet");
+		Item item = new Item(ID1,NAME,TAGS);
+		manager.removeItem(item);
+		
+		assertNull(manager.getItem(ID1));
 	}
 
 	/**

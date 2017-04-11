@@ -13,9 +13,9 @@ import java.util.Set;
 public class Item implements Serializable, Comparable<Item>{
 	
 	private static final long serialVersionUID = 1L;
-	public String id;
-	public String name;
-	public Set<String> tags;
+	private String id;
+	private String name;
+	private Set<String> tags;
 	
 	public Item(){
 		setId("");
@@ -29,31 +29,73 @@ public class Item implements Serializable, Comparable<Item>{
 		setName(name);
 		setTags(tags);
 	}
+	
+	/**
+	 * retorna valor id
+	 * 
+	 * @return
+	 */
 
 	public String getId() {
 		return id;
 	}
+	
+	/**
+	 * altera o valor do id
+	 * 
+	 * @param id
+	 */
 
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	/**
+	 * retorna o nome
+	 * 
+	 * @return
+	 */
 
 	public String getName() {
 		return name;
 	}
+	
+	/**
+	 * altera no nome
+	 * 
+	 * @param name
+	 */
 
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	/**
+	 * retorna as tags
+	 * 
+	 * @return
+	 */
 
 	public Set<String> getTags() {
-		if(tags==null) return new HashSet<String>();
+		if(tags==null) 
+			return new HashSet<String>();
 		return tags;
 	}
 
+	/**
+	 * altera as tags
+	 * 
+	 * @param tags
+	 */
+	
 	public void setTags(Set<String> tags) {
 		this.tags = tags;
 	}
+	
+	/**
+	 * cria hashcode
+	 * 
+	 */
 	
 	@Override
 	public int hashCode() {
@@ -65,6 +107,10 @@ public class Item implements Serializable, Comparable<Item>{
 		return result;
 	}
 	
+	/**
+	 * compara dois objectos 
+	 * 
+	 */
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -93,15 +139,31 @@ public class Item implements Serializable, Comparable<Item>{
 		return true;
 	}
 
+	/**
+	 * retorna uma string discritiva do objecto 
+	 */
+	
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", tags=" + tags + "]";
 	}
 	
 	
+	/**
+	 * retorna o conjunto de ids relacionados com o item
+	 * 
+	 * @return hashset
+	 */
+	
+	
 	Set<String> getRelatedItemIds(){
 		return new HashSet<String>();
 	}
+	
+	/**
+	 * compara por ids lexicograficamente
+	 * 
+	 */
 
 	@Override
 	public int compareTo(Item item) {

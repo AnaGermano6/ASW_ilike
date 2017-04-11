@@ -14,34 +14,52 @@ import java.util.Set;
 public class User extends Item implements Observer{
 	
 	private static final long serialVersionUID = 1L;
-	public static int feedSize; //numero de elementos do feed
-	public LinkedList<String> feeds;
+	private static int feedSize; //numero de elementos do feed
+	private LinkedList<String> feeds;
 	
-	User(String id, String name, Set<String> tags) {
+	public User(String id, String name, Set<String> tags) {
 		super(id, name, tags);
 		this.feeds = new LinkedList<String>();
 	}
 
+	/**
+	 * retorna o tamanho do feed
+	 * 
+	 * @return
+	 */
+	
 	public static int getFeedSize() {
 		return feedSize;
 	}
-
-	public static void setFeedSize(int feedSize) {
-		User.feedSize = feedSize;
+	
+	/**
+	 * altera o tamanho da feed
+	 * 
+	 * @param size
+	 */
+	
+	public static void setFeedSize(int size) {
+		feedSize = size;
 	}
 
 	/**
 	 * actualizacoes ao utilizador
 	 * 
-	 * @return
+	 * @return feeds
 	 */
 	
 	public LinkedList<String> getFeed(){
 		return feeds;
 	}
-
-	public void setFeeds(LinkedList<String> feeds) {
-		this.feeds = feeds;
+	
+	/**
+	 * altera o feed
+	 * 
+	 * @param feedList
+	 */
+	
+	public void setFeeds(LinkedList<String> feedList) {
+		feeds = feedList;
 	}
 	
 	
@@ -52,10 +70,10 @@ public class User extends Item implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) {		
-		((LinkedList<String>) feeds).addFirst(arg.toString());
+		feeds.addFirst((String) arg);
 		
-		if(feeds.size()>User.getFeedSize()){
-			feeds.remove(feeds.size()-1);
+		if(feeds.size()> feedSize){
+			feeds.removeLast();
 		}
 	}
 }

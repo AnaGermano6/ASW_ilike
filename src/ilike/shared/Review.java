@@ -13,10 +13,10 @@ import java.util.Set;
 public class Review extends Item implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	public String authorId;
-	public String topicId;
-	public Rating rating;
-	public String description;
+	private String authorId;
+	private String topicId;
+	private Rating rating;
+	private String description;
 	
 	public Review(String id, String name, Set<String> tags, String autorId, String topicId, Rating rating,
 			String description) {
@@ -27,42 +27,82 @@ public class Review extends Item implements Serializable {
 		this.description = description;
 	}
 	
+	/**
+	 * retorna valor authorid
+	 * 
+	 * @return
+	 */
 	
 	public String getAuthorId() {
 		return authorId;
 	}
 
+	/**
+	 * altera o authorid
+	 * 
+	 * @param autorId
+	 */
 
 	public void setAuthorId(String autorId) {
 		this.authorId = autorId;
 	}
 
+	/**
+	 * retorna valor topicid
+	 * 
+	 * @return
+	 */
 
 	public String getTopicId() {
 		return topicId;
 	}
 
-
+	/**
+	 * altera o topicid
+	 * 
+	 * @param topicId
+	 */
+	
 	public void setTopicId(String topicId) {
 		this.topicId = topicId;
 	}
 
+	/**
+	 * retorna valor o rating
+	 * 
+	 * @return
+	 */
 
 	public Rating getRating() {
 		return rating;
 	}
 
+	/**
+	 * altera o rating 
+	 * 
+	 * @param rating
+	 */
 
 	public void setRating(Rating rating) {
 		this.rating = rating;
 	}
-
+	
+	/**
+	 * retorna valor da descricao
+	 * 
+	 * @return
+	 */
 
 	public String getDescription() {
 		return description;
 	}
 
-
+	/**
+	 * altera o rating 
+	 * 
+	 * @param descrição
+	 */
+	
 	public void setDescription(String descrição) {
 		this.description = descrição;
 	}
@@ -79,7 +119,11 @@ public class Review extends Item implements Serializable {
 		return hs; 
 	}
 
-
+	/**
+	 * compara dois objectos 
+	 * 
+	 */
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -109,6 +153,10 @@ public class Review extends Item implements Serializable {
 		return true;
 	}
 
+	/**
+	 * cria hashcode
+	 * 
+	 */
 	
 	@Override
 	public int hashCode() {
@@ -121,6 +169,9 @@ public class Review extends Item implements Serializable {
 		return result;
 	}
 	
+	/**
+	 * retorna uma string discritiva do obejecto 
+	 */
 	
 	@Override
 	public String toString() {

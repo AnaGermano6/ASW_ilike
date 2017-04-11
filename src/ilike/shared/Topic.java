@@ -14,47 +14,81 @@ import java.util.Set;
 public class Topic extends Item implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	public Date date;
-	public String description;
-	public LinkedList<String> topics;
+	private Date date;
+	private String description;
+	private LinkedList<String> topics;
 	
-	Topic(String id, String name, Set<String> tags, String description, Date date) {
+	public Topic(String id, String name, Set<String> tags, String description, Date date) {
 		super(id, name, tags);
 		this.date = date;
 		this.description = description;
 		this.topics = new LinkedList<String>();
 	}
-
+	
+	/**
+	 * retorna valor
+	 * 
+	 * @return
+	 */
 
 	public Date getDate() {
 		return date;
 	}
-
+	
+	/**
+	 * altera a data
+	 * 
+	 * @param date
+	 */
 
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	
+	/**
+	 * retorna a description
+	 * 
+	 * @return
+	 */
 
 	public String getDescription() {
 		return description;
 	}
-
+	
+	/**
+	 * altera a description
+	 * 
+	 * @param description
+	 */
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * retorna a lista de topics
+	 * 
+	 * @return
+	 */
 
 	public LinkedList<String> getReviews() {
 		return topics;
 	}
-
+	
+	/**
+	 * altera as reviews
+	 * 
+	 * @param reviews
+	 */
 
 	public void setReviews(LinkedList<String> reviews) {
 		this.topics = reviews;
 	}
 
+	/**
+	 * cria hashcode
+	 * 
+	 */
 
 	@Override
 	public int hashCode() {
@@ -66,6 +100,11 @@ public class Topic extends Item implements Serializable {
 		return result;
 	}
 
+
+	/**
+	 * compara dois objectos 
+	 * 
+	 */
 
 	@Override
 	public boolean equals(Object obj) {
@@ -94,6 +133,10 @@ public class Topic extends Item implements Serializable {
 		return true;
 	}
 
+	/**
+	 * retorna uma string discritiva do objecto 
+	 */
+	
 
 	@Override
 	public String toString() {
@@ -107,7 +150,9 @@ public class Topic extends Item implements Serializable {
 	 */
 	
 	public void addReview(String id){
-		this.topics.add(id);
+		if(topics == null)
+			topics = new LinkedList<String>();
+		topics.add(id);
 	}
 	
 	/**
@@ -117,14 +162,15 @@ public class Topic extends Item implements Serializable {
 	 */
 	
 	public void removeReview(String id){
-		this.topics.remove(id);
+		if(topics != null && topics.contains(id))
+		topics.remove(id);
 	}
 	
 	/**
 	 *lista de criticas associadas ao topico
 	 * 
 	 * @param id
-	 * @return 
+	 * @return topics
 	 */
 	public LinkedList<String> getReviews(String id){
 		return topics;
